@@ -1,0 +1,13 @@
+{
+  "name": "@radixs/tsconfig",
+  "version": "0.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "description": "Gedeelde TypeScript-basisconfiguratie voor Studio Radixs",
+  "files": [
+    "base.json"
+  ],
+  "exports": {
+    "./base.json": "./base.json"
+  }
+}

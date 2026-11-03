@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+# Een nieuwe push op dezelfde branch annuleert de vorige run; op main niet,
+# daar willen we elke commit een eigen resultaat geven.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      # `npm ci` faalt bewust als package-lock.json niet klopt met package.json.
+      - name: Install
+        run: npm ci
+
+      # Dezelfde opdracht die een ontwikkelaar lokaal draait. Workspaces zonder
+      # het betreffende script worden overgeslagen (`--if-present`).
+      - name: Verify
+        run: npm run verify

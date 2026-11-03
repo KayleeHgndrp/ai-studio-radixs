@@ -1,0 +1,21 @@
+{
+  "name": "ai-studio-radixs",
+  "version": "0.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "description": "Monorepo van Studio Radixs",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "verify": "npm run verify:lint && npm run verify:typecheck && npm run verify:test && npm run verify:build",
+    "verify:lint": "npm run lint --if-present --workspaces --include-workspace-root",
+    "verify:typecheck": "npm run typecheck --if-present --workspaces --include-workspace-root",
+    "verify:test": "npm run test --if-present --workspaces --include-workspace-root",
+    "verify:build": "npm run build --if-present --workspaces --include-workspace-root"
+  }
+}

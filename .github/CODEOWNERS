@@ -1,0 +1,12 @@
+# Code owners.
+#
+# De CTO reviewt het werk van de engineers. Alle agents van Studio Radixs werken
+# via één gedeelde GitHub-identiteit (@KayleeHgndrp), dus dit bestand wijst het
+# eigenaarschap aan die identiteit toe.
+#
+# Let op: het inhoudelijke reviewverdict wordt vastgelegd op de Paperclip-task,
+# niet als GitHub-approval. GitHub staat niet toe dat de auteur van een PR zijn
+# eigen PR goedkeurt, en met één gedeelde identiteit is de auteur altijd ook de
+# code owner. Zie CONTRIBUTING.md, sectie "Hoe de review werkt".
+
+* @KayleeHgndrp
