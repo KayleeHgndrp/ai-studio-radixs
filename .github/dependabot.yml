@@ -1,0 +1,31 @@
+version: 2
+
+updates:
+  # npm-dependencies over de hele workspace. Wekelijks en gebundeld, zodat er
+  # niet elke dag losse PR's binnenkomen die niemand reviewt.
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: chore
+      include: scope
+    groups:
+      dev-dependencies:
+        dependency-type: development
+        update-types: [minor, patch]
+      production-patch:
+        dependency-type: production
+        update-types: [patch]
+
+  # Actions in de CI-workflow. Een verouderde action is een stille bron van
+  # kapotte builds.
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    commit-message:
+      prefix: chore
